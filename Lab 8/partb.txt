@@ -1,0 +1,66 @@
+# 1
+d = {"a": 1, "b": 2}
+d2 = d
+d2["c"] = 3
+print(len(d))
+
+==>>output = 3 because there are three elements in the dictionary
+
+-------------------------------------------------------------------------------------------------
+# 2
+d = {"x": [1]}
+e = d.copy()
+e["x"].append(2)
+print(d)
+
+==>>output = {'x': [1, 2]} because x is a key and [1,2] is a list as a data for key x initially the list had only 1 element but later we appended 2 in data list of x with using append function.
+
+-------------------------------------------------------------------------------------------------
+# 3
+print({k: v for k, v in zip("abc", range(3)) if v})
+
+==>>i was not able to give any output of this code.
+
+-------------------------------------------------------------------------------------------------
+# 4
+d = {"a": 1}
+print(d.setdefault("a", 9), d.setdefault("b", 5), d)
+
+==> output = 
+1 5 {'a': 1, 'b': 5}
+setdefault("a", 9) returns the existing value 1 and does not replace it. setdefault("b", 5) adds "b": 5 because "b" was missing.
+
+-------------------------------------------------------------------------------------------------
+# 5
+d = {1: "a", 1.0: "b", True: "c"}
+print(d, len(d))
+
+==>> output = {1: 'c'} 1
+The keys 1, 1.0, and True compare equal and have the same hash, so they represent one dictionary key. Each assignment replaces the value; the last value is 'c'.
+
+-------------------------------------------------------------------------------------------------
+# 6
+d = {"a": 1, "b": 2, "c": 3}
+for k in d:
+    if d[k] == 2:
+        del d[k]
+
+==>> my reposnse for this is wrong because i deleted the data at index 3 which is {"c":3}
+
+-------------------------------------------------------------------------------------------------
+# 7
+d = {"a": 1, "b": 2}
+print(d.pop("z", None), d.popitem())
+
+==>> output = None ('b', 2)
+pop("z", None) returns the default None because "z" is not in the dictionary. 
+popitem() removes and returns the last inserted pair, ("b", 2).
+
+-------------------------------------------------------------------------------------------------
+
+# 8
+print({v: k for k, v in {"a": 1, "b": 1}.items()})
+
+==>> output ={1: 'a', 1: 'b'}
+
+Reason: This is a dictionary comprehension that swaps each key and value. Both original values are 1, so they become the same key in the new dictionary. Dictionary keys must be unique, so the later value 'b' replaces 'a'. The actual output is {1: 'b'}.

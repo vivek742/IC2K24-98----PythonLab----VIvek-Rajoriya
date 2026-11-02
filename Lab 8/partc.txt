@@ -1,0 +1,53 @@
+# 1 - Why does d2 = d not create a copy, and what is the difference between d.copy() and copy.deepcopy(d) for a nested dictionary? Which one would you use for the student database and why?
+# ans = d2 = d gives d2 another reference to the same dictionary; it does not make a copy. d.copy() makes a shallow copy, so nested dictionaries or lists are still shared. copy.deepcopy(d) copies the nested objects too. For the student database, use deepcopy when you need an independent copy of student records and marks.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 2 - Why must dictionary keys be hashable? Which of [1, 2], (1, 2), {1, 2} and "12" can be a key?
+# ans = Dictionary keys must be hashable so Python can store and find them reliably. (1, 2) and "12" can be keys. [1, 2] and {1, 2} cannot, because they are mutable.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 3 - When would you use d[key], d.get(key) and d.get(key, default)? Give one case from your programs where each is the right choice.
+# ans = Use d[key] when the key should exist, such as accessing a known "name" field. Use d.get(key) when a missing key is expected and None is suitable. Use d.get(key, default) when you want a fallback, such as displaying "not found" for a missing phone number.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 4 - Explain the difference between .update() and assigning d[key] = value in a loop. When is .update() cleaner?
+# ans = d[key] = value assigns one entry. .update() adds or replaces several entries from another dictionary or key-value pairs. .update() is cleaner when applying multiple changes at once, such as updating several fields in a contact record.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 5 - In Q2, why is "create a new dictionary with a comprehension" safer than modifying salaries in place? When would in-place modification be the better choice?
+# ans = A new dictionary comprehension keeps the original salaries unchanged, so you can compare the original data with the raise report. In-place changes are better when you intend to permanently update the actual salary records.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 6 -Why does deleting keys while looping over a dictionary fail, and what are two safe ways to do it?
+# ans = Deleting a key during a dictionary loop changes its size, which invalidates the iterator and raises an error. Two safe approaches are to loop over list(d) (a copy of the keys) or create a new dictionary with a comprehension that leaves out the keys to remove.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 7 - In Q3, you needed a member -> books view of data stored as book -> members. Explain how you inverted it and why a list (not a single value) is needed for the new values.
+# ans = To invert book -> members into member -> books, go through each book and each member listed for it, then add that book to the member’s list. A list is needed because one member may hold several books.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# 8 - What is the time complexity of looking up a key in a dictionary, and how does this compare with searching a list of records? Use Q5's reverse lookup to explain why building a number -> name dictionary is worthwhile.
+# ans = Dictionary lookup is O(1) on average; searching a list of records is O(n) because records may need to be checked one by one. In the phone directory, a number -> name dictionary makes reverse lookups quick, instead of scanning every contact and phone number each time.
+-------------------------------------------------------------------------------------------------
+
